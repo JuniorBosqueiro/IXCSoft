@@ -2,7 +2,7 @@ const { MessageEmbed } = require("discord.js");
 
 module.exports = {
   name: "clear",
-  description: "Clears the server queue",
+  description: "Limpar a queue de músicas",
   usage: "",
   permissions: {
     channel: ["VIEW_CHANNEL", "SEND_MESSAGES", "EMBED_LINKS"],
@@ -21,18 +21,18 @@ module.exports = {
     if (!player)
       return client.sendTime(
         message.channel,
-        "❌ | **Nothing is playing right now...**"
+        "❌ | **Nada está tocando agora...**"
       );
 
     if (!player.queue || !player.queue.length || player.queue.length === 0)
       return client.sendTime(
         message.channel,
-        "❌ | **Nothing is playing right now...**"
+        "❌ | **NNada está tocando agora...**"
       );
     if (!message.member.voice.channel)
       return client.sendTime(
         message.channel,
-        "❌ | **You must be in a voice channel to play something!**"
+        "❌ | **Você deve estar em um canal de voz para tocar algo!**"
       );
     if (
       message.guild.me.voice.channel &&
@@ -40,7 +40,7 @@ module.exports = {
     )
       return client.sendTime(
         message.channel,
-        ":x: | **You must be in the same voice channel as me to use this command!**"
+        ":x: | **Você deve estar no mesmo canal de voz que eu para usar este comando!**"
       );
     player.queue.clear();
     await client.sendTime(message.channel, "✅ | **Cleared the queue!**");
@@ -60,7 +60,7 @@ module.exports = {
       if (!member.voice.channel)
         return client.sendTime(
           interaction,
-          "❌ | You must be in a voice channel to use this command."
+          "❌ | Você deve estar em um canal de voz para usar este comando."
         );
       if (
         guild.me.voice.channel &&
@@ -68,22 +68,22 @@ module.exports = {
       )
         return client.sendTime(
           interaction,
-          ":x: | **You must be in the same voice channel as me to use this command!**"
+          ":x: | **Você deve estar no mesmo canal de voz que eu para usar este comando!**"
         );
       let player = await client.Manager.get(interaction.guild_id);
       if (!player)
         return client.sendTime(
           interaction,
-          "❌ | **Nothing is playing right now...**"
+          "❌ | **Não está jogando nada agora...**"
         );
 
       if (!player.queue || !player.queue.length || player.queue.length === 0)
         return client.sendTime(
           interaction,
-          "❌ | **Nothing is playing right now...**"
+          "❌ | **Não está jogando nada agora...**"
         );
       player.queue.clear();
-      await client.sendTime(interaction, "✅ | **Cleared the queue!**");
+      await client.sendTime(interaction, "✅ | **A queue de músicas foi limpa!**");
     },
   },
 };
