@@ -4,7 +4,7 @@ const prettyMilliseconds = require("pretty-ms");
 
 module.exports = {
   name: "queue",
-  description: "Shows all currently enqueued songs",
+  description: "Mostrar todas as músicas.",
   usage: "",
   permissions: {
     channel: ["VIEW_CHANNEL", "SEND_MESSAGES", "EMBED_LINKS"],
@@ -23,7 +23,7 @@ module.exports = {
     if (!player)
       return client.sendTime(
         message.channel,
-        "❌ | **Nothing is playing right now...**"
+        "❌ | **Nada está tocando agora...**"
       );
 
     if (!player.queue || !player.queue.length || player.queue === 0) {
@@ -132,7 +132,7 @@ module.exports = {
       if (!player)
         return client.sendTime(
           interaction,
-          "❌ | **Nothing is playing right now...**"
+          "❌ | **Nada está tocando agora...**"
         );
 
       if (!player.queue || !player.queue.length || player.queue === 0) {
